@@ -49,12 +49,12 @@ public class DaftarActivity extends AppCompatActivity {
                             Toast.makeText(DaftarActivity.this,"Success",Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             i.putExtra("email",user.getEmail());
+                            startActivity(i);
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(DaftarActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
-                        startActivity(i);
                     }
                 });
             }
