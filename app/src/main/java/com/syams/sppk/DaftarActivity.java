@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,7 +39,7 @@ public class DaftarActivity extends AppCompatActivity {
 
                 String email = txt_email.getText().toString();
                 String password = txt_email.getText().toString();
-                final Intent i = new Intent(DaftarActivity.this,home.class);
+                final Intent i = new Intent(DaftarActivity.this,HomeActivity.class);
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(DaftarActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -70,7 +69,7 @@ public class DaftarActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser!=null){
             // User is signed in
-            Intent i = new Intent(DaftarActivity.this,home.class);
+            Intent i = new Intent(DaftarActivity.this,HomeActivity.class);
             i.putExtra("email",currentUser.getEmail());
             startActivity(i);
         }

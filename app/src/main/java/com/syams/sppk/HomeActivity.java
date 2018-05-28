@@ -1,8 +1,6 @@
 package com.syams.sppk;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,10 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-import org.w3c.dom.Text;
-
-public class home extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +22,23 @@ public class home extends AppCompatActivity {
         String email = i.getStringExtra("email");
 
         TextView txt_welcome = (TextView) findViewById(R.id.txt_welcome);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        Button btn_logout = (Button) findViewById(R.id.btn_logout);
+        Button btn_tambah = (Button) findViewById(R.id.btn_tambahData);
+
         txt_welcome.setText("Selamat datang "+email);
 
-        Button btn_logout = (Button) findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(home.this,LoginActivity.class));
+                startActivity(new Intent(HomeActivity.this,LoginActivity.class));
+            }
+        });
+        btn_tambah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,TambahDataActivity.class));
             }
         });
 

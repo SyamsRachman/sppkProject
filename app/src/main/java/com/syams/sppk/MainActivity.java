@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // User is signed in
-            Intent i = new Intent(MainActivity.this,home.class);
+            Intent i = new Intent(MainActivity.this,HomeActivity.class);
             i.putExtra("email",user.getEmail());
             startActivity(i);
         } else {
