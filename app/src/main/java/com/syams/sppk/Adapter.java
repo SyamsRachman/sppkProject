@@ -12,9 +12,9 @@ import java.util.ArrayList;
 
 public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     Context context;
-//    String[] items;
     ArrayList<String> items;
     ArrayList<String> idItems;
+
 
     public Adapter(Context context, ArrayList<String> idItems){
         this.context=context;
