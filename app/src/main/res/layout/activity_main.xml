@@ -14,7 +14,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="82dp"
-        android:text="Login" />
+        android:text="Login"
+        android:layout_alignParentLeft="true" />
 
     <Button
         android:id="@+id/btn_register"
@@ -23,7 +24,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="17dp"
-        android:text="Daftar" />
+        android:text="Daftar"
+        android:layout_alignParentLeft="true" />
 
     <Button
         android:id="@+id/btn_sppk"
@@ -32,5 +34,6 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="150dp"
-        android:text="SPPK" />
+        android:text="SPPK"
+        android:layout_alignParentLeft="true" />
 </RelativeLayout>
