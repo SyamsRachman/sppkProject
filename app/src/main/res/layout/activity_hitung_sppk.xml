@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DataTanamanActivity">
+    tools:context=".HitungSppkActivity">
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,26 +23,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Detail Data"
+                android:text="Hitung Sppk"
                 android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Nama Tanaman"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="42dp" />
-
-            <EditText
-                android:id="@+id/txt_namaTanaman"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:cursorVisible="false"
-                android:ems="10"
-                android:focusable="false"
-                android:inputType="textPersonName" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -54,7 +37,6 @@
                 android:id="@+id/txt_suhu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
@@ -70,7 +52,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:focusable="false"
                 android:inputType="textPersonName" />
 
             <TextView
@@ -85,7 +66,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:focusable="false"
                 android:inputType="textPersonName" />
 
             <TextView
@@ -100,7 +80,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:focusable="false"
                 android:inputType="textPersonName" />
 
             <TextView
@@ -115,14 +94,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:focusable="false"
                 android:inputType="textPersonName" />
 
             <Button
-                android:id="@+id/btn_simpan"
+                android:id="@+id/btn_hitung"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Simpan"
+                android:text="HItung"
                 android:visibility="visible" />
         </LinearLayout>
     </ScrollView>

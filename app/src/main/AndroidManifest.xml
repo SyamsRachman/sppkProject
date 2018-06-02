@@ -26,7 +26,9 @@
             android:name=".LoginActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".TambahDataActivity" />
-        <activity android:name=".DataTanamanActivity"></activity>
+        <activity android:name=".DataTanamanActivity" />
+        <activity android:name=".HitungSppkActivity" />
+        <activity android:name=".HasilSppkActivity"></activity>
     </application>
 
 </manifest>

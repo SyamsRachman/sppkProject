@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn_registrasi = (Button) findViewById(R.id.btn_register);
         Button btn_login = (Button) findViewById(R.id.btn_login);
+        Button btn_sppk = (Button) findViewById(R.id.btn_sppk);
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -39,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            }
+        });
+        btn_sppk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,HitungSppkActivity.class));
             }
         });
     }
