@@ -9,22 +9,22 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Hitung Sppk"
-                android:textSize="20sp" />
+                android:text="Hitung Kriteria Lahan"
+                android:textSize="20sp"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/textView5"
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="5" />
+                android:hint="5" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="100" />
+                android:hint="100" />
 
             <TextView
                 android:id="@+id/kelembapan"
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="120" />
+                android:hint="120" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="120" />
+                android:hint="120" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -99,13 +99,14 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="120" />
+                android:hint="120" />
 
             <Button
                 android:id="@+id/btn_hitung"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="HItung"
+                android:background="@drawable/rec_gradient"
                 android:visibility="visible" />
         </LinearLayout>
     </ScrollView>

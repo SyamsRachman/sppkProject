@@ -14,14 +14,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/txt_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
                 android:text="Nama Tanaman"
                 android:textAppearance="@android:style/TextAppearance.Large"
                 android:textSize="24sp"
@@ -34,8 +33,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
                 android:text="TextView"
                 android:textSize="20sp"
                 tools:layout_editor_absoluteX="16dp"
