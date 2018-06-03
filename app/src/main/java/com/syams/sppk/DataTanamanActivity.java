@@ -1,5 +1,6 @@
 package com.syams.sppk;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class DataTanamanActivity extends AppCompatActivity {
@@ -31,6 +33,8 @@ public class DataTanamanActivity extends AppCompatActivity {
     EditText txt_kedalamanTanah;
     EditText txt_drainase;
     Button btn_simpan;
+    Button btn_hapus;
+    Button btn_edit;
 
 
     @Override
@@ -44,6 +48,9 @@ public class DataTanamanActivity extends AppCompatActivity {
         txt_kedalamanTanah = (EditText) findViewById(R.id.txt_kedalamanTanah);
         txt_drainase = (EditText) findViewById(R.id.txt_drainase);
         btn_simpan = (Button) findViewById(R.id.btn_simpan);
+        btn_hapus = (Button) findViewById(R.id.btn_hapus);
+        btn_edit = (Button) findViewById(R.id.btn_edit);
+
 
 
         btn_simpan.setVisibility(View.INVISIBLE);
@@ -88,6 +95,41 @@ public class DataTanamanActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+        btn_hapus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDatabase.removeValue();
+                startActivity(new Intent(DataTanamanActivity.this, HomeActivity.class));
+            }
+        });
+        btn_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_simpan.setVisibility(View.VISIBLE);
+                txt_namaTanaman.setEnabled(true);
+                txt_suhu.setEnabled(true);
+                txt_kelembapan.setEnabled(true);
+                txt_kedalamanTanah.setEnabled(true);
+                txt_drainase.setEnabled(true);
+                txt_curahHujan.setEnabled(true);
+            }
+        });
+        btn_simpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Map<String, Object> map = new HashMap<>();
+                map.put("nama tanaman",txt_namaTanaman.getText().toString());
+                map.put("temperatur rerata",txt_suhu.getText().toString());
+                map.put("kelembapan", txt_kelembapan.getText().toString());
+                map.put("kedalaman tanah",txt_kedalamanTanah.getText().toString());
+                map.put("curah hujan",txt_curahHujan.getText().toString());
+                map.put("drainase",txt_drainase.getText().toString());
+
+                mDatabase.updateChildren(map);
+                startActivity(new Intent(DataTanamanActivity.this, HomeActivity.class));
             }
         });
     }
