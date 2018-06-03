@@ -14,7 +14,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/txt_hasil"
@@ -25,7 +26,8 @@
                 android:text="TextView"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="16dp" />
+                tools:layout_editor_absoluteY="16dp"
+                android:textAlignment="center"/>
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>
