@@ -1,6 +1,7 @@
 package com.syams.sppk;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -42,8 +43,9 @@ public class HomeActivity extends AppCompatActivity {
         TextView txt_welcome = (TextView) findViewById(R.id.txt_welcome);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("dataTraining");
         Button btn_logout = (Button) findViewById(R.id.btn_logout);
-        Button btn_tambah = (Button) findViewById(R.id.btn_tambahData);
+        FloatingActionButton btn_tambah = (FloatingActionButton) findViewById(R.id.btn_tambahData);
         mRecyclerView = (RecyclerView) findViewById(R.id.list_dataset);
+
 
 
         txt_welcome.setText("Selamat datang " + email);
@@ -105,6 +107,13 @@ btn_logout.setOnClickListener(new View.OnClickListener() {
         startActivity(new Intent(HomeActivity.this,MainActivity.class));
     }
 });
+
+    btn_tambah.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(new Intent(HomeActivity.this, TambahDataActivity.class));
+        }
+    });
 
     }
 
