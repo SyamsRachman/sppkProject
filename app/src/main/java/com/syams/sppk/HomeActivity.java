@@ -23,13 +23,11 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
-//    private DatabaseReference mDatabase2;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     String[] myDataset;
     ArrayList<String> idtanaman = new ArrayList<>();
-//    ArrayList<String> tanaman = new ArrayList<>();
     Adapter adapter;
 
     @Override
@@ -41,12 +39,9 @@ public class HomeActivity extends AppCompatActivity {
 
         TextView txt_welcome = (TextView) findViewById(R.id.txt_welcome);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("dataTraining");
-//        mDatabase2 = FirebaseDatabase.getInstance().getReference().child("dataTraining");
-
         Button btn_logout = (Button) findViewById(R.id.btn_logout);
         Button btn_tambah = (Button) findViewById(R.id.btn_tambahData);
         mRecyclerView = (RecyclerView) findViewById(R.id.list_dataset);
-//        myDataset = (String[]) idtanaman.toArray();
 
 
         txt_welcome.setText("Selamat datang " + email);
@@ -61,7 +56,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 String value = dataSnapshot.getKey();
                 idtanaman.add(value);
-//                mDatabase2 = FirebaseDatabase.getInstance().getReference().child("dataTraining").child(value);
                 adapter.notifyDataSetChanged();
 
             }
@@ -87,7 +81,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-//        mRecyclerView
+btn_logout.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(HomeActivity.this,MainActivity.class));
+    }
+});
 
     }
 
