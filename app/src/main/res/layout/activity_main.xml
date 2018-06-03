@@ -20,7 +20,7 @@
             android:layout_alignParentTop="true"
             android:height="300dp"
             android:width="300dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/ic_logo"
             android:layout_centerInParent="true" />
 
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:text="TEPAT - TANAM"
             android:textAlignment="center"
-            android:textSize="20dp"
+            android:textSize="30dp"
             android:fontFamily="@string/common_google_play_services_enable_title"
             android:textColor="#fff"/>
 

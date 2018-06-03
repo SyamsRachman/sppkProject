@@ -50,15 +50,15 @@ public class HitungSppkActivity extends AppCompatActivity {
         double parameterSuhu;
         if (suhuRerata < 17) {
             parameterSuhu = 0;
-        } else if (suhuRerata > 17 && suhuRerata < 20) {
+        } else if (suhuRerata >= 18 && suhuRerata <= 20) {
             parameterSuhu = 0.15;
-        } else if (suhuRerata > 21 && suhuRerata < 22) {
+        } else if (suhuRerata >= 21 && suhuRerata <= 22) {
             parameterSuhu = 0.3;
-        } else if (suhuRerata > 23 && suhuRerata < 30) {
+        } else if (suhuRerata >= 23 && suhuRerata <= 30) {
             parameterSuhu = 0.5;
-        } else if (suhuRerata > 31 && suhuRerata < 32) {
+        } else if (suhuRerata >= 31 && suhuRerata <= 32) {
             parameterSuhu = 0.65;
-        } else if (suhuRerata > 33 && suhuRerata < 35) {
+        } else if (suhuRerata >= 33 && suhuRerata <= 35) {
             parameterSuhu = 0.8;
         } else {
             parameterSuhu = 1;
@@ -70,15 +70,15 @@ public class HitungSppkActivity extends AppCompatActivity {
         double parameterCurahHujan;
         if (curahHujan < 199) {
             parameterCurahHujan = 0;
-        } else if (curahHujan > 200 && curahHujan < 300) {
+        } else if (curahHujan >= 200 && curahHujan <= 300) {
             parameterCurahHujan = 0.15;
-        } else if (curahHujan > 301 && curahHujan < 400) {
+        } else if (curahHujan >= 301 && curahHujan <= 400) {
             parameterCurahHujan = 0.3;
-        } else if (curahHujan > 401 && curahHujan < 1110) {
+        } else if (curahHujan >= 401 && curahHujan <= 1110) {
             parameterCurahHujan = 0.5;
-        } else if (curahHujan > 1111 && curahHujan < 1600) {
+        } else if (curahHujan >= 1111 && curahHujan <= 1600) {
             parameterCurahHujan = 0.65;
-        } else if (curahHujan > 1601 && curahHujan < 1900) {
+        } else if (curahHujan >= 1601 && curahHujan <= 1900) {
             parameterCurahHujan = 0.8;
         } else {
             parameterCurahHujan = 1;
@@ -90,13 +90,13 @@ public class HitungSppkActivity extends AppCompatActivity {
         double parameterKelembapan;
         if (kelembapan < 29) {
             parameterKelembapan = 0;
-        } else if (kelembapan > 30 && kelembapan < 36) {
+        } else if (kelembapan >= 30 && kelembapan <= 36) {
             parameterKelembapan = 0.2;
-        } else if (kelembapan > 37 && kelembapan < 42) {
+        } else if (kelembapan >= 37 && kelembapan <= 42) {
             parameterKelembapan = 0.4;
-        } else if (kelembapan > 43 && kelembapan < 75) {
+        } else if (kelembapan >= 43 && kelembapan <= 75) {
             parameterKelembapan = 0.6;
-        } else if (kelembapan > 76 && kelembapan < 90) {
+        } else if (kelembapan >= 76 && kelembapan <= 90) {
             parameterKelembapan = 0.8;
         } else {
             parameterKelembapan = 1;
@@ -109,9 +109,9 @@ public class HitungSppkActivity extends AppCompatActivity {
 
         if (kedalamanTanah < 50) {
             parameterKedalamanTanah = 0;
-        } else if (kedalamanTanah > 50 && kedalamanTanah < 75) {
+        } else if (kedalamanTanah >= 50 && kedalamanTanah <= 75) {
             parameterKedalamanTanah = 0.3;
-        } else if (kedalamanTanah > 76 && kedalamanTanah < 100) {
+        } else if (kedalamanTanah >= 76 && kedalamanTanah <= 100) {
             parameterKedalamanTanah = 0.6;
         } else {
             parameterKedalamanTanah = 1;
@@ -125,13 +125,13 @@ public class HitungSppkActivity extends AppCompatActivity {
             parameterDrainase = 0;
         } else if (drainase==0) {
             parameterDrainase = 0.15;
-        } else if (drainase > 25 && drainase < 49) {
+        } else if (drainase >= 25 && drainase <= 49) {
             parameterDrainase = 0.3;
-        } else if (drainase > 50 && drainase < 99) {
+        } else if (drainase >= 50 && drainase <= 99) {
             parameterDrainase = 0.5;
-        } else if (drainase > 100 && drainase < 149) {
+        } else if (drainase >= 100 && drainase <= 149) {
             parameterDrainase = 0.65;
-        } else if (drainase > 150 && drainase < 199) {
+        } else if (drainase >= 150 && drainase <= 199) {
             parameterDrainase = 0.8;
         } else {
             parameterDrainase = 1;
