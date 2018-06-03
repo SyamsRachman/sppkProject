@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     String[] myDataset;
     ArrayList<String> idtanaman = new ArrayList<>();
+    ArrayList<String> namaTanaman = new ArrayList<>();
     Adapter adapter;
 
     @Override
@@ -47,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
         txt_welcome.setText("Selamat datang " + email);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager( this));
-        adapter = new Adapter(this,idtanaman);
+        adapter = new Adapter(this,idtanaman,namaTanaman);
         mRecyclerView.setAdapter(adapter);
 
 
@@ -73,6 +75,21 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (int i = 0;i<idtanaman.size();i++){
+                    String value = dataSnapshot.child(idtanaman.get(i)).child("nama tanaman").getValue().toString();
+                    namaTanaman.add(value);
+                    adapter.notifyDataSetChanged();
+                }
             }
 
             @Override
