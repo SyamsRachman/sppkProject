@@ -33,6 +33,7 @@ public class DaftarActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
+
         btn_daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,8 +52,22 @@ public class DaftarActivity extends AppCompatActivity {
                             startActivity(i);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(DaftarActivity.this, "Authentication failed.",
+
+                            try {
+                                throw task.getException();
+                            } catch(com.google.firebase.auth.FirebaseAuthWeakPasswordException e) {
+                                txt_password.setError("password lemah");
+                                txt_password.requestFocus();
+                            } catch(com.google.firebase.auth.FirebaseAuthInvalidCredentialsException e) {
+                                txt_email.setError("email tidak benar");
+                                txt_email.requestFocus();
+                            } catch(com.google.firebase.auth.FirebaseAuthUserCollisionException e) {
+                                txt_email.setError("user sudah ada");
+                                txt_email.requestFocus();
+                            } catch(Exception e) {
+                               Toast.makeText(DaftarActivity.this, "Authentication failed. "+e.getMessage(),
                                     Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 });

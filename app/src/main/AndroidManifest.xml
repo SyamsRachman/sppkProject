@@ -29,6 +29,10 @@
         <activity android:name=".DataTanamanActivity" />
         <activity android:name=".HitungSppkActivity" />
         <activity android:name=".HasilSppkActivity"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="3734d1fbe8773e27a53a0a730bfdfaec158b3845" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
