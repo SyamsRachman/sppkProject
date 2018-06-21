@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
@@ -55,9 +56,21 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(i);
                                 } else {
                                     // If sign in fails, display a message to the user.
-//                                    Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                    Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
+                                    FirebaseAuthException exception = (FirebaseAuthException) task.getException();
+
+                                    if (exception.getErrorCode().equalsIgnoreCase("ERROR_INVALID_EMAIL")){
+                                        txt_email.setError("Email tidak benar");
+                                        txt_email.requestFocus();
+                                    } else if (exception.getErrorCode().equalsIgnoreCase("ERROR_USER_NOT_FOUND")){
+                                        txt_email.setError("User tidak ditemukan");
+                                        txt_email.requestFocus();
+                                    } else if (exception.getErrorCode().equalsIgnoreCase("ERROR_WRONG_PASSWORD")){
+                                        txt_email.setError("Password salah");
+                                        txt_email.requestFocus();
+                                    } else {
+                                        Toast.makeText(LoginActivity.this,exception.getErrorCode(),Toast.LENGTH_SHORT).show();
+                                    }
+
                                 }
 
                                 // ...

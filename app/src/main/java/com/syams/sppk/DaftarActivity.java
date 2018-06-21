@@ -56,13 +56,13 @@ public class DaftarActivity extends AppCompatActivity {
                             try {
                                 throw task.getException();
                             } catch(com.google.firebase.auth.FirebaseAuthWeakPasswordException e) {
-                                txt_password.setError("password lemah");
+                                txt_password.setError("Password lemah");
                                 txt_password.requestFocus();
                             } catch(com.google.firebase.auth.FirebaseAuthInvalidCredentialsException e) {
-                                txt_email.setError("email tidak benar");
+                                txt_email.setError("Email tidak benar");
                                 txt_email.requestFocus();
                             } catch(com.google.firebase.auth.FirebaseAuthUserCollisionException e) {
-                                txt_email.setError("user sudah ada");
+                                txt_email.setError("User sudah ada");
                                 txt_email.requestFocus();
                             } catch(Exception e) {
                                Toast.makeText(DaftarActivity.this, "Authentication failed. "+e.getMessage(),
