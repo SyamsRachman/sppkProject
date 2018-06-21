@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -46,16 +47,30 @@ public class TambahDataActivity extends AppCompatActivity {
                 String kedalamanTanah = txt_kedalamanTanah.getText().toString();
                 String drainase = txt_drainase.getText().toString();
 
-                HashMap<String, String> dataMap = new HashMap<String, String>();
+                if (namaTanaman.isEmpty()){
+                    txt_namaTanaman.setError("Data tidak boleh Kosong");
+                } else if (suhu.isEmpty()){
+                    txt_suhu.setError("Data tidak boleh kosong");
+                } else if (curahHujan.isEmpty()){
+                    txt_curahHujan.setError("Data tidak boleh kosong");
+                } else if (kelembapan.isEmpty()){
+                    txt_kelembapan.setError("Data tidak boleh kosong");
+                } else if (kedalamanTanah.isEmpty()){
+                    txt_kedalamanTanah.setError("Data tidak boleh kosong");
+                } else if (drainase.isEmpty()){
+                    txt_drainase.setError("Data tidak boleh kosong");
+                } else {
+                    HashMap<String, String> dataMap = new HashMap<String, String>();
+                    dataMap.put("nama tanaman",namaTanaman);
+                    dataMap.put("temperatur rerata",suhu);
+                    dataMap.put("curah hujan",curahHujan);
+                    dataMap.put("kelembapan",kelembapan);
+                    dataMap.put("kedalaman tanah",kedalamanTanah);
+                    dataMap.put("drainase",drainase);
+                    mDatabase.push().setValue(dataMap);
+                    startActivity(new Intent(TambahDataActivity.this,HomeActivity.class));
+                }
 
-                dataMap.put("nama tanaman",namaTanaman);
-                dataMap.put("temperatur rerata",suhu);
-                dataMap.put("curah hujan",curahHujan);
-                dataMap.put("kelembapan",kelembapan);
-                dataMap.put("kedalaman tanah",kedalamanTanah);
-                dataMap.put("drainase",drainase);
-                mDatabase.push().setValue(dataMap);
-                startActivity(new Intent(TambahDataActivity.this,HomeActivity.class));
             }
         });
 

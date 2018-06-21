@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:focusable="auto"
-                android:inputType="textPersonName" />
+                android:inputType="numberSigned" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:focusable="auto"
-                android:inputType="textPersonName" />
+                android:inputType="numberSigned" />
 
             <TextView
                 android:id="@+id/kelembapan"
@@ -110,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:focusable="auto"
-                android:inputType="textPersonName" />
+                android:inputType="numberSigned" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:focusable="auto"
-                android:inputType="textPersonName" />
+                android:inputType="numberSigned" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -140,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:focusable="auto"
-                android:inputType="textPersonName" />
+                android:inputType="numberSigned" />
 
             <Button
                 android:id="@+id/btn_simpan"

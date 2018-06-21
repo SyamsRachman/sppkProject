@@ -120,16 +120,36 @@ public class DataTanamanActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Map<String, Object> map = new HashMap<>();
-                map.put("nama tanaman",txt_namaTanaman.getText().toString());
-                map.put("temperatur rerata",txt_suhu.getText().toString());
-                map.put("kelembapan", txt_kelembapan.getText().toString());
-                map.put("kedalaman tanah",txt_kedalamanTanah.getText().toString());
-                map.put("curah hujan",txt_curahHujan.getText().toString());
-                map.put("drainase",txt_drainase.getText().toString());
+                String namaTanaman = txt_namaTanaman.getText().toString();
+                String suhu = txt_suhu.getText().toString();
+                String curahHujan = txt_curahHujan.getText().toString();
+                String kelembapan = txt_kelembapan.getText().toString();
+                String kedalamanTanah = txt_kedalamanTanah.getText().toString();
+                String drainase = txt_drainase.getText().toString();
 
-                mDatabase.updateChildren(map);
-                startActivity(new Intent(DataTanamanActivity.this, HomeActivity.class));
+                if (namaTanaman.isEmpty()){
+                    txt_namaTanaman.setError("Data tidak boleh Kosong");
+                } else if (suhu.isEmpty()){
+                    txt_suhu.setError("Data tidak boleh kosong");
+                } else if (curahHujan.isEmpty()){
+                    txt_curahHujan.setError("Data tidak boleh kosong");
+                } else if (kelembapan.isEmpty()){
+                    txt_kelembapan.setError("Data tidak boleh kosong");
+                } else if (kedalamanTanah.isEmpty()){
+                    txt_kedalamanTanah.setError("Data tidak boleh kosong");
+                } else if (drainase.isEmpty()){
+                    txt_drainase.setError("Data tidak boleh kosong");
+                } else {
+                    Map<String, Object> dataMap = new HashMap<>();
+                    dataMap.put("nama tanaman", namaTanaman);
+                    dataMap.put("temperatur rerata", suhu);
+                    dataMap.put("curah hujan", curahHujan);
+                    dataMap.put("kelembapan", kelembapan);
+                    dataMap.put("kedalaman tanah", kedalamanTanah);
+                    dataMap.put("drainase", drainase);
+                    mDatabase.push().updateChildren(dataMap);
+                    startActivity(new Intent(DataTanamanActivity.this, HomeActivity.class));
+                }
             }
         });
     }
