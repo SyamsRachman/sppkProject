@@ -66,6 +66,9 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                String value = dataSnapshot.getKey();
+                idtanaman.add(value);
+                adapter.notifyDataSetChanged();
 
             }
 
@@ -88,9 +91,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (int i = 0;i<idtanaman.size();i++){
-                    String value = dataSnapshot.child(idtanaman.get(i)).child("nama tanaman").getValue().toString();
-                    namaTanaman.add(value);
-                    adapter.notifyDataSetChanged();
+                    try {
+
+                        String value = dataSnapshot.child(idtanaman.get(i)).child("nama tanaman").getValue().toString();
+                        namaTanaman.add(value);
+                        adapter.notifyDataSetChanged();
+                    } catch (NullPointerException e){
+                        idtanaman.remove(i);
+                    }
                 }
             }
 

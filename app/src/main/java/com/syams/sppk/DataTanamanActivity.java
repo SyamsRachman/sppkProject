@@ -72,22 +72,25 @@ public class DataTanamanActivity extends AppCompatActivity {
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-//                Log.v("E_VALUE","Data :"+dataSnapshot.getValue());
+                Log.v("E_VALUE","Data :"+dataSnapshot.getValue());
 
-                Map<String, String> map = (Map<String, String>) dataSnapshot.getValue();
-                String namaTanaman = map.get("nama tanaman");
-                String suhu = map.get("temperatur rerata");
-                String kembapan = map.get("kelembapan");
-                String kedalamanTanah = map.get("kedalaman tanah");
-                String drainase = map.get("drainase");
-                String curahHujan = map.get("curah hujan");
+                if (dataSnapshot.getValue()!=null){
+                    Map<String, String> map = (Map<String, String>) dataSnapshot.getValue();
+                    String namaTanaman = map.get("nama tanaman");
+                    String suhu = map.get("temperatur rerata");
+                    String kembapan = map.get("kelembapan");
+                    String kedalamanTanah = map.get("kedalaman tanah");
+                    String drainase = map.get("drainase");
+                    String curahHujan = map.get("curah hujan");
 
-                txt_namaTanaman.setText(namaTanaman);
-                txt_suhu.setText(suhu);
-                txt_kelembapan.setText(kembapan);
-                txt_kedalamanTanah.setText(kedalamanTanah);
-                txt_drainase.setText(drainase);
-                txt_curahHujan.setText(curahHujan);
+                    txt_namaTanaman.setText(namaTanaman);
+                    txt_suhu.setText(suhu);
+                    txt_kelembapan.setText(kembapan);
+                    txt_kedalamanTanah.setText(kedalamanTanah);
+                    txt_drainase.setText(drainase);
+                    txt_curahHujan.setText(curahHujan);
+                    }
+
 
 
 
