@@ -17,8 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
-            android:noHistory="true" />
+            android:name=".HomeActivity"/>
         <activity
             android:name=".DaftarActivity"
             android:parentActivityName=".MainActivity" />
@@ -26,7 +25,8 @@
             android:name=".LoginActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".TambahDataActivity" />
-        <activity android:name=".DataTanamanActivity" />
+        <activity android:name=".DataTanamanActivity"
+            android:noHistory="true"/>
         <activity android:name=".HitungSppkActivity" />
         <activity android:name=".HasilSppkActivity"></activity>
         <meta-data

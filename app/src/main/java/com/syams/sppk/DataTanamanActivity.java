@@ -149,7 +149,7 @@ public class DataTanamanActivity extends AppCompatActivity {
                     dataMap.put("kelembapan", kelembapan);
                     dataMap.put("kedalaman tanah", kedalamanTanah);
                     dataMap.put("drainase", drainase);
-                    mDatabase.push().updateChildren(dataMap);
+                    mDatabase.updateChildren(dataMap);
                     startActivity(new Intent(DataTanamanActivity.this, HomeActivity.class));
                 }
             }
