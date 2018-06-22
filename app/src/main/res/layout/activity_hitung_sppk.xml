@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="numberSigned"
                 android:hint="celcius" />
 
             <TextView
@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="numberSigned"
                 android:hint="mm" />
 
             <TextView
@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="numberSigned"
                 android:hint="%" />
 
             <TextView
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="numberSigned"
                 android:hint="cm" />
 
             <TextView
@@ -98,14 +98,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="numberSigned"
                 android:hint="mph" />
 
             <Button
                 android:id="@+id/btn_hitung"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="HItung"
+                android:text="Hitung"
                 android:textColor="#fff"
                 android:background="@drawable/rec_gradient"
                 android:visibility="visible" />

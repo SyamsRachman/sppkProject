@@ -213,49 +213,74 @@ public class HitungSppkActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                suhuRerata = Integer.parseInt(String.valueOf(txt_suhu.getText()));
-                curahHujan = Integer.parseInt(String.valueOf(txt_curahHujan.getText()));
-                kelembapan = Integer.parseInt(String.valueOf(txt_kelembapan.getText()));
-                kedalamanTanah = Integer.parseInt(String.valueOf(txt_kedalamanTanah.getText()));
-                drainase = Integer.parseInt(String.valueOf(txt_drainase.getText()));
+                Boolean error=false;
 
+                if (txt_suhu.getText().toString().isEmpty()){
+                    txt_suhu.setError("Data tidak boleh kosong");
+                    error = true;
+                }
+                if (txt_curahHujan.getText().toString().isEmpty()){
+                    txt_curahHujan.setError("Data tidak boleh kosong");
+                    error = true;
+                }
+                if (txt_kelembapan.getText().toString().isEmpty()){
+                    txt_kelembapan.setError("Data tidak boleh kosong");
+                    error = true;
+                }
+                if (txt_kedalamanTanah.getText().toString().isEmpty()){
+                    txt_kedalamanTanah.setError("Data tidak boleh kosong");
+                    error = true;
+                }
+                if (txt_drainase.getText().toString().isEmpty()){
+                    txt_drainase.setError("Data tidak boleh kosong");
+                    error = true;
+                }
+                if (!error){
 
-                Intent i = new Intent(HitungSppkActivity.this, HasilSppkActivity.class);
+                    suhuRerata = Integer.parseInt(String.valueOf(txt_suhu.getText()));
+                    curahHujan = Integer.parseInt(String.valueOf(txt_curahHujan.getText()));
+                    kelembapan = Integer.parseInt(String.valueOf(txt_kelembapan.getText()));
+                    kedalamanTanah = Integer.parseInt(String.valueOf(txt_kedalamanTanah.getText()));
+                    drainase = Integer.parseInt(String.valueOf(txt_drainase.getText()));
 
-                String hasil;
+                    Intent i = new Intent(HitungSppkActivity.this, HasilSppkActivity.class);
 
-                hasil = "Data Test : ";
-                hasil += "\nSuhu rerata : "+suhuRerata+" \t-> "+parameterSuhu(suhuRerata);
-                hasil += "\nCurah Hujan : "+curahHujan+" \t-> "+parameterCurahHujan(curahHujan);
-                hasil += "\nKelembapan : "+kelembapan+" \t-> "+parameterKelembapan(kelembapan);
-                hasil += "\nKedalaman Tanah : "+kedalamanTanah+" \t-> "+parameterKedalamanTanah(kedalamanTanah);
-                hasil += "\nDrainase : "+drainase+" \t-> "+parameterDrainase(drainase);
+                    String hasil;
 
-                for (int j=0;j<idTanaman.size();j++){
+                    hasil = "Data Test : ";
+                    hasil += "\nSuhu rerata : "+suhuRerata+" \t-> "+parameterSuhu(suhuRerata);
+                    hasil += "\nCurah Hujan : "+curahHujan+" \t-> "+parameterCurahHujan(curahHujan);
+                    hasil += "\nKelembapan : "+kelembapan+" \t-> "+parameterKelembapan(kelembapan);
+                    hasil += "\nKedalaman Tanah : "+kedalamanTanah+" \t-> "+parameterKedalamanTanah(kedalamanTanah);
+                    hasil += "\nDrainase : "+drainase+" \t-> "+parameterDrainase(drainase);
 
-                    double nilaiSuhu = parameterSuhu(Integer.parseInt(tanaman[j][1]));
-                    double nilaiCurahHujan = parameterCurahHujan(Integer.parseInt(tanaman[j][2]));
-                    double nilaiKelembapan = parameterKelembapan(Integer.parseInt(tanaman[j][3]));
-                    double nilaiKedalamanTanah = parameterKedalamanTanah(Integer.parseInt(tanaman[j][4]));
-                    double nilaiDrainase = parameterDrainase(Integer.parseInt(tanaman[j][5]));
+                    for (int j=0;j<idTanaman.size();j++){
 
-                    hasil += "\n\nData Traning : "+idTanaman.get(j);
-                    hasil += "\nNama Tumbuhan : "+tanaman[j][0];
-                    hasil += "\nSuhu rerata : "+tanaman[j][1]+" \t-> "+nilaiSuhu;
-                    hasil += "\nCurah Hujan : "+tanaman[j][2]+" \t-> "+nilaiCurahHujan;
-                    hasil += "\nKelembapan : "+tanaman[j][3]+" \t-> "+nilaiKelembapan;
-                    hasil += "\nKedalaman Tanah : "+tanaman[j][4]+" \t-> "+nilaiKedalamanTanah;
-                    hasil += "\nDrainase : "+tanaman[j][5]+" \t-> "+nilaiDrainase;
-                    hasil += "\nHasil : "+
-                            Math.sqrt(Math.pow(nilaiSuhu-parameterSuhu(suhuRerata),2)+
-                            Math.pow(nilaiCurahHujan-parameterCurahHujan(curahHujan),2)+
-                            Math.pow(nilaiKelembapan-parameterKelembapan(kelembapan),2)+
-                            Math.pow(nilaiKedalamanTanah-parameterKedalamanTanah(kedalamanTanah),2)+
-                            Math.pow(nilaiDrainase-parameterDrainase(drainase),2));
+                        double nilaiSuhu = parameterSuhu(Integer.parseInt(tanaman[j][1]));
+                        double nilaiCurahHujan = parameterCurahHujan(Integer.parseInt(tanaman[j][2]));
+                        double nilaiKelembapan = parameterKelembapan(Integer.parseInt(tanaman[j][3]));
+                        double nilaiKedalamanTanah = parameterKedalamanTanah(Integer.parseInt(tanaman[j][4]));
+                        double nilaiDrainase = parameterDrainase(Integer.parseInt(tanaman[j][5]));
+
+                        hasil += "\n\nData Traning : "+idTanaman.get(j);
+                        hasil += "\nNama Tumbuhan : "+tanaman[j][0];
+                        hasil += "\nSuhu rerata : "+tanaman[j][1]+" \t-> "+nilaiSuhu;
+                        hasil += "\nCurah Hujan : "+tanaman[j][2]+" \t-> "+nilaiCurahHujan;
+                        hasil += "\nKelembapan : "+tanaman[j][3]+" \t-> "+nilaiKelembapan;
+                        hasil += "\nKedalaman Tanah : "+tanaman[j][4]+" \t-> "+nilaiKedalamanTanah;
+                        hasil += "\nDrainase : "+tanaman[j][5]+" \t-> "+nilaiDrainase;
+                        hasil += "\nHasil : "+
+                                Math.sqrt(Math.pow(nilaiSuhu-parameterSuhu(suhuRerata),2)+
+                                        Math.pow(nilaiCurahHujan-parameterCurahHujan(curahHujan),2)+
+                                        Math.pow(nilaiKelembapan-parameterKelembapan(kelembapan),2)+
+                                        Math.pow(nilaiKedalamanTanah-parameterKedalamanTanah(kedalamanTanah),2)+
+                                        Math.pow(nilaiDrainase-parameterDrainase(drainase),2));
+
+                    }
+                    i.putExtra("hasil",hasil);
+                    startActivity(i);
 
                 }
-                i.putExtra("hasil",hasil);
-                startActivity(i);
             }
         });
 

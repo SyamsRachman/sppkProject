@@ -50,6 +50,7 @@ public class DataTanamanActivity extends AppCompatActivity {
         btn_simpan = (Button) findViewById(R.id.btn_simpan);
         btn_hapus = (Button) findViewById(R.id.btn_hapus);
         btn_edit = (Button) findViewById(R.id.btn_edit);
+        Toast.makeText(this,"hai",Toast.LENGTH_SHORT);
 
 
 
@@ -102,6 +103,7 @@ public class DataTanamanActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mDatabase.removeValue();
                 startActivity(new Intent(DataTanamanActivity.this, HomeActivity.class));
+                finish();
             }
         });
         btn_edit.setOnClickListener(new View.OnClickListener() {

@@ -47,19 +47,32 @@ public class TambahDataActivity extends AppCompatActivity {
                 String kedalamanTanah = txt_kedalamanTanah.getText().toString();
                 String drainase = txt_drainase.getText().toString();
 
+                Boolean error= false;
+
                 if (namaTanaman.isEmpty()){
                     txt_namaTanaman.setError("Data tidak boleh Kosong");
-                } else if (suhu.isEmpty()){
+                    error=true;
+                }
+                if (suhu.isEmpty()){
                     txt_suhu.setError("Data tidak boleh kosong");
-                } else if (curahHujan.isEmpty()){
+                    error=true;
+                }
+                if (curahHujan.isEmpty()){
                     txt_curahHujan.setError("Data tidak boleh kosong");
-                } else if (kelembapan.isEmpty()){
+                    error=true;
+                }
+                if (kelembapan.isEmpty()){
                     txt_kelembapan.setError("Data tidak boleh kosong");
-                } else if (kedalamanTanah.isEmpty()){
+                    error=true;
+                }
+                if (kedalamanTanah.isEmpty()){
                     txt_kedalamanTanah.setError("Data tidak boleh kosong");
-                } else if (drainase.isEmpty()){
+                    error=true;
+                }
+                if (drainase.isEmpty()){
                     txt_drainase.setError("Data tidak boleh kosong");
-                } else {
+                    error=true;
+                } if(!error) {
                     HashMap<String, String> dataMap = new HashMap<String, String>();
                     dataMap.put("nama tanaman",namaTanaman);
                     dataMap.put("temperatur rerata",suhu);
