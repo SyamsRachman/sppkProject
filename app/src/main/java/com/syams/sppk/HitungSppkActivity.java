@@ -36,7 +36,7 @@ public class HitungSppkActivity extends AppCompatActivity {
     int urutan;
     String[][] tanaman;
 
-    int suhuRerata, curahHujan, kelembapan,
+    Double suhuRerata, curahHujan, kelembapan,
             kedalamanTanah, drainase;
 
 //    double parameterSuhu, parameterCurahHujan, parameterKelembapan,
@@ -46,7 +46,7 @@ public class HitungSppkActivity extends AppCompatActivity {
 
     ArrayList<String> idTanaman = new ArrayList<>();
 
-    public double parameterSuhu(int suhuRerata){
+    public double parameterSuhu(Double suhuRerata){
         double parameterSuhu;
         if (suhuRerata < 17) {
             parameterSuhu = 0;
@@ -66,7 +66,7 @@ public class HitungSppkActivity extends AppCompatActivity {
         return parameterSuhu;
     }
 
-    public double parameterCurahHujan(int curahHujan){
+    public double parameterCurahHujan(Double curahHujan){
         double parameterCurahHujan;
         if (curahHujan < 199) {
             parameterCurahHujan = 0;
@@ -86,7 +86,7 @@ public class HitungSppkActivity extends AppCompatActivity {
         return parameterCurahHujan;
     }
 
-    public double parameterKelembapan(int kelembapan){
+    public double parameterKelembapan(Double kelembapan){
         double parameterKelembapan;
         if (kelembapan < 29) {
             parameterKelembapan = 0;
@@ -104,7 +104,7 @@ public class HitungSppkActivity extends AppCompatActivity {
         return parameterKelembapan;
     }
 
-    public double parameterKedalamanTanah(int kedalamanTanah){
+    public double parameterKedalamanTanah(Double kedalamanTanah){
         double parameterKedalamanTanah;
 
         if (kedalamanTanah < 50) {
@@ -119,7 +119,7 @@ public class HitungSppkActivity extends AppCompatActivity {
         return parameterKedalamanTanah;
     }
 
-    public double parameterDrainase(int drainase){
+    public double parameterDrainase(Double drainase){
         double parameterDrainase;
         if (suhuRerata < 0) {
             parameterDrainase = 0;
@@ -188,7 +188,7 @@ public class HitungSppkActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.v("E_VALUE","DATA: "+dataSnapshot.getValue());
 
-                tanaman = new String[idTanaman.size()][6];
+                tanaman = new String[idTanaman.size()][7];
                 for (int i=0;i<idTanaman.size();i++){
                     Map<String, String> map = (Map<String, String>) dataSnapshot.child(idTanaman.get(i)).getValue();
                     tanaman[i][0] = map.get("nama tanaman");
@@ -237,11 +237,11 @@ public class HitungSppkActivity extends AppCompatActivity {
                 }
                 if (!error){
 
-                    suhuRerata = Integer.parseInt(String.valueOf(txt_suhu.getText()));
-                    curahHujan = Integer.parseInt(String.valueOf(txt_curahHujan.getText()));
-                    kelembapan = Integer.parseInt(String.valueOf(txt_kelembapan.getText()));
-                    kedalamanTanah = Integer.parseInt(String.valueOf(txt_kedalamanTanah.getText()));
-                    drainase = Integer.parseInt(String.valueOf(txt_drainase.getText()));
+                    suhuRerata = Double.parseDouble(String.valueOf(txt_suhu.getText()));
+                    curahHujan = Double.parseDouble(String.valueOf(txt_curahHujan.getText()));
+                    kelembapan = Double.parseDouble(String.valueOf(txt_kelembapan.getText()));
+                    kedalamanTanah = Double.parseDouble(String.valueOf(txt_kedalamanTanah.getText()));
+                    drainase = Double.parseDouble(String.valueOf(txt_drainase.getText()));
 
                     Intent i = new Intent(HitungSppkActivity.this, HasilSppkActivity.class);
 
@@ -256,11 +256,63 @@ public class HitungSppkActivity extends AppCompatActivity {
 
                     for (int j=0;j<idTanaman.size();j++){
 
-                        double nilaiSuhu = parameterSuhu(Integer.parseInt(tanaman[j][1]));
-                        double nilaiCurahHujan = parameterCurahHujan(Integer.parseInt(tanaman[j][2]));
-                        double nilaiKelembapan = parameterKelembapan(Integer.parseInt(tanaman[j][3]));
-                        double nilaiKedalamanTanah = parameterKedalamanTanah(Integer.parseInt(tanaman[j][4]));
-                        double nilaiDrainase = parameterDrainase(Integer.parseInt(tanaman[j][5]));
+                        double nilaiSuhu = parameterSuhu(Double.parseDouble(tanaman[j][1]));
+                        double nilaiCurahHujan = parameterCurahHujan(Double.parseDouble(tanaman[j][2]));
+                        double nilaiKelembapan = parameterKelembapan(Double.parseDouble(tanaman[j][3]));
+                        double nilaiKedalamanTanah = parameterKedalamanTanah(Double.parseDouble(tanaman[j][4]));
+                        double nilaiDrainase = parameterDrainase(Double.parseDouble(tanaman[j][5]));
+
+                        double nilaiTotal = Math.sqrt(Math.pow(nilaiSuhu-parameterSuhu(suhuRerata),2)+
+                                Math.pow(nilaiCurahHujan-parameterCurahHujan(curahHujan),2)+
+                                Math.pow(nilaiKelembapan-parameterKelembapan(kelembapan),2)+
+                                Math.pow(nilaiKedalamanTanah-parameterKedalamanTanah(kedalamanTanah),2)+
+                                Math.pow(nilaiDrainase-parameterDrainase(drainase),2));
+
+                        tanaman[j][6] = String.valueOf(nilaiTotal);
+
+
+                    }
+
+                    for (int j=0;j<idTanaman.size()-1;j++){
+                        for (int k=0;k<idTanaman.size()-j-1;k++){
+                            if (Double.parseDouble(tanaman[k][6]) > Double.parseDouble(tanaman[k+1][6]))
+                            {
+                                // swap temp and arr[i]
+                                String nama = tanaman[k][0];
+                                String nilaiSuhu = tanaman[k][1];
+                                String nilaiCurahHujan = tanaman[k][2];
+                                String nilaiKelembapan = tanaman[k][3];
+                                String nilaiKedalamanTanah = tanaman[k][4];
+                                String nilaiDrainase = tanaman[k][5];
+                                String nilaiTotal = tanaman[k][6];
+
+                                tanaman[k][0] = tanaman[k+1][0];
+                                tanaman[k][1] = tanaman[k+1][1];
+                                tanaman[k][2] = tanaman[k+1][2];
+                                tanaman[k][3] = tanaman[k+1][3];
+                                tanaman[k][4] = tanaman[k+1][4];
+                                tanaman[k][5] = tanaman[k+1][5];
+                                tanaman[k][6] = tanaman[k+1][6];
+
+                                tanaman[k+1][0] = nama;
+                                tanaman[k+1][1] = nilaiSuhu;
+                                tanaman[k+1][2] = nilaiCurahHujan;
+                                tanaman[k+1][3] = nilaiKelembapan;
+                                tanaman[k+1][4] = nilaiKedalamanTanah;
+                                tanaman[k+1][5] = nilaiDrainase;
+                                tanaman[k+1][6] = nilaiTotal;
+
+                            }
+                        }
+                    }
+
+                    for (int j=0;j<idTanaman.size();j++){
+                        double nilaiSuhu = parameterSuhu(Double.parseDouble(tanaman[j][1]));
+                        double nilaiCurahHujan = parameterCurahHujan(Double.parseDouble(tanaman[j][2]));
+                        double nilaiKelembapan = parameterKelembapan(Double.parseDouble(tanaman[j][3]));
+                        double nilaiKedalamanTanah = parameterKedalamanTanah(Double.parseDouble(tanaman[j][4]));
+                        double nilaiDrainase = parameterDrainase(Double.parseDouble(tanaman[j][5]));
+
 
                         hasil += "\n\nData Traning : "+idTanaman.get(j);
                         hasil += "\nNama Tumbuhan : "+tanaman[j][0];
@@ -269,14 +321,9 @@ public class HitungSppkActivity extends AppCompatActivity {
                         hasil += "\nKelembapan : "+tanaman[j][3]+" \t-> "+nilaiKelembapan;
                         hasil += "\nKedalaman Tanah : "+tanaman[j][4]+" \t-> "+nilaiKedalamanTanah;
                         hasil += "\nDrainase : "+tanaman[j][5]+" \t-> "+nilaiDrainase;
-                        hasil += "\nHasil : "+
-                                Math.sqrt(Math.pow(nilaiSuhu-parameterSuhu(suhuRerata),2)+
-                                        Math.pow(nilaiCurahHujan-parameterCurahHujan(curahHujan),2)+
-                                        Math.pow(nilaiKelembapan-parameterKelembapan(kelembapan),2)+
-                                        Math.pow(nilaiKedalamanTanah-parameterKedalamanTanah(kedalamanTanah),2)+
-                                        Math.pow(nilaiDrainase-parameterDrainase(drainase),2));
-
+                        hasil += "\nHasil : "+ tanaman[j][6];
                     }
+
                     i.putExtra("hasil",hasil);
                     startActivity(i);
 
