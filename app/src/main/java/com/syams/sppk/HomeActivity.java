@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,12 +49,22 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-        txt_welcome.setText("Selamat datang " + email);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager( this));
         adapter = new Adapter(this,idtanaman,namaTanaman);
         mRecyclerView.setAdapter(adapter);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // User is signed in
+            email = user.getEmail();
+        } else {
+            // No user is signed in
+            startActivity(new Intent(HomeActivity.this, MainActivity.class));
+            finish();
+        }
+
+        txt_welcome.setText("Selamat datang " + email);
 
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
